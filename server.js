@@ -1,19 +1,23 @@
+// Load environment variables from .env file
+require('dotenv').config();
+
 // Constants
 const express = require('express')
+const mongoose = require('mongoose');
 
 // Variables
 const app = express()
 const PORT = 3000
 
-// Middleware
-app.use(express.urlencoded({extended: false}))
+// MongoDB Connection Setup
+mongoose.connect(process.env.MONGODB_URI); 
 
 // Routes
-app.get('/test',(req,res)=>{
-  res.send('Server is running')
-})
+// Home Route
+app.get('/', async (req, res) => {
+  res.render('index.ejs');
+});
 
-app.listen(PORT, ()=>{
-  console.log('Server is Running');
-  
+app.listen(PORT, () => {
+  console.log('Server is Running')
 })
