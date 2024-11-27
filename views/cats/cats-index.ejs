@@ -1,15 +1,21 @@
+<head><link rel="stylesheet" href="/stylesheets/style.css" />
+</head>
+
 <body>
-  <a href="/cats/new">Add New Cat</a>
-  <a href="/">Home</a>
-  <h1>All Cats</h1>
+  <h1>List of Cats</h1>
   
-  <ul>
-    <% cats.forEach(cat => { %>
+  <ul class="cat-list">
+    <% cats.forEach((cat, index) => { %>
       <li>
-        <a href="/cats/<%= cat._id %>">
-          <%= cat.name %>
-        </a>
+        <a href="/cats/<%= cat._id %>"><%= cat.name %></a>
       </li>
-    <% }) %>
-  </ul>
-</body>
+      <% if ((index + 1) % 2 === 0) { %>
+        <br> <!-- Break after every two cats -->
+        <% } %>
+        <% }) %>
+      </ul>
+      <div class="link-container">
+      <a href="/">Home</a>
+      <a href="/cats/new">Add a New Cat</a>
+    </div>
+  </body>

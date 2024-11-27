@@ -1,21 +1,34 @@
+<head><link rel="stylesheet" href="/stylesheets/style.css" />
+</head>
+
 <body>
-  <a href="/cats">All Cats</a>
-  <a href="/">Home</a>
-  <h1>Create a new Cat</h1>
-
-  <form action="/cats" method="post">
-    <label for="name">Name:</label>
-    <input type="text" name="name" id="name" />
-
-    <label for="age">Age:</label>
-    <input type="number" name="age" id="age" />
-
-    <label for="breed">Breed:</label>
-    <input type="text" name="breed" id="breed" />
-
-    <label for="isAdopted">Adopted?</label>
-    <input type="checkbox" name="isAdopted" id="isAdopted" />
-
-    <button type="submit">Add Cat</button>
-  </form>
+  <div class="new-form">
+    <h1>Add a New Cat</h1>
+    <form action="/cats" method="POST">
+      <div class="checkbox-container">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="Enter cat's name" required>
+      </div>
+  
+      <div class="checkbox-container">
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" placeholder="Enter cat's age" required>
+      </div>
+  
+      <div class="checkbox-container">
+        <label for="breed">Breed:</label>
+        <input type="text" id="breed" name="breed" placeholder="Enter cat's breed" required>
+      </div>
+  
+      <div class="checkbox-container">
+        <label for="isAdopted">Adopted:</label>
+        <input type="checkbox" id="isAdopted" name="isAdopted">
+      </div>
+  
+      <div class="link-container">
+        <a href="/">Home</a>
+        <button type="submit">Add Cat</button>
+      </div>
+    </form>
+  </div>
 </body>
