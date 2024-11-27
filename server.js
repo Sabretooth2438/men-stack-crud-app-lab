@@ -1,23 +1,29 @@
-// Load environment variables from .env file
-require('dotenv').config();
+// Load environment variables
+require('dotenv').config()
 
-// Constants
+// Import modules
 const express = require('express')
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
+const methodOverride = require('method-override')
 
-// Variables
+// Initialize app
 const app = express()
 const PORT = 3000
 
-// MongoDB Connection Setup
-mongoose.connect(process.env.MONGODB_URI); 
+// Middleware
+app.use(express.urlencoded({ extended: false }))
+app.use(methodOverride('_method'))
+
+// MongoDB connection
+mongoose.connect(process.env.MONGODB_URI)
+mongoose.connection.on('connected', () =>
+  console.log(`Connected to MongoDB: ${mongoose.connection.name}`)
+)
 
 // Routes
-// Home Route
-app.get('/', async (req, res) => {
-  res.render('index.ejs');
-});
+app.get('/', (req, res) => res.render('index.ejs'))
+const catCtrl = require('./controllers/cats')
+app.use('/', catCtrl)
 
-app.listen(PORT, () => {
-  console.log('Server is Running')
-})
+// Start server
+app.listen(PORT, () => console.log(`Listening on port ${PORT}`))

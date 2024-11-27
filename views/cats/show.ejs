@@ -1,0 +1,16 @@
+<body>
+  <a href="/cats">All Cats</a>
+
+  <h1><%= cat.name %></h1>
+
+  <% if(cat.isAdopted){ %>
+    <p>This cat has been adopted!</p>
+  <% } else { %>
+    <p>This cat is available for adoption.</p>
+  <% } %>
+
+  <form action="/cats/<%= cat._id %>?_method=DELETE" method="POST">
+    <button type="submit">Delete <%= cat.name %></button>
+  </form>
+  <a href="/cats/<%= cat._id %>/edit">Edit <%= cat.name %></a>
+</body>
